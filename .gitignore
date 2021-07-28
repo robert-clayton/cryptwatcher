@@ -1,3 +1,6 @@
+node_modules/
+waved.exe
+wavedb.exe
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
