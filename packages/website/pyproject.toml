@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "cryptwatcher"
+version = "0.1.0"
+description = ""
+authors = ["robert-clayton <41345902+robert-clayton@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+h2o-wave = "^0.17.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+pylint = "^2.9.5"
+pytest-cov = "^2.12.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
