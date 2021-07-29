@@ -50,7 +50,9 @@ To create a web app that displays predictions on the price of a crypto currency 
     - [ ] Data collection - Tweets
 4. [ ] Train a set of models that predict the price of a given crypto currency
     - [ ] Load historical market data from the database via the API
+    - [ ] Train a model which performs sentiment analysis of a cyrptocurrency's tweets
     - [ ] Train a model to predict the price of a crypto currency based on market conditions
+        - [ ] Chain output of sentiment analysis model into the price prediction model's input
     - [ ] Ability to deploy more accurately trained models
 5. [ ] Create a headless service that interacts with the trained models and provides predictions to the remote database whenever a new market condition is encountered
     - [ ] Automated testing
