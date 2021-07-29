@@ -20,7 +20,7 @@ To create a web app that displays predictions on the price of a crypto currency 
         - [ ] Show the predicted price of the selected crypto
         - [ ] Show the predicted price of the selected crypto in the graph
             - [ ] Include certainty range
-    - [ ] Pull data from database via WaveDB using API defined in the following step
+    - [ ] Pulls data from database via WaveDB using API defined in the following step
 2. [ ] Create an API for the webapp
     - [ ] Automated testing
     - [ ] Automated linting
@@ -49,8 +49,9 @@ To create a web app that displays predictions on the price of a crypto currency 
     - [ ] Data collection - Ticker History
     - [ ] Data collection - Tweets
 4. [ ] Train a set of models that predict the price of a given crypto currency
-    - [ ] Load historical market data from the 
+    - [ ] Load historical market data from the database via the API
     - [ ] Train a model to predict the price of a crypto currency based on market conditions
+    - [ ] Ability to deploy more accurately trained models
 5. [ ] Create a headless service that interacts with the trained models and provides predictions to the remote database whenever a new market condition is encountered
     - [ ] Automated testing
     - [ ] Automated linting
