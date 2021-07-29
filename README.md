@@ -1,8 +1,17 @@
 # cryptwatcher
 Monorepo for a crypto predictor web app
 
+
 ## Goal
 To create a web app that displays predictions on the price of a crypto currency based on market conditions (e.g. ticker history, sentiment analysis, etc).
+
+## Development Dependencies
+- Website
+    - [Python 3.9.6](https://www.python.org/downloads/release/python-396/)
+    - [Poetry](https://python-poetry.org/)
+    - [Nox](https://python-nox.readthedocs.io/en/stable/)
+    - [h2o-wave](https://github.com/h2oai/wave/releases/)
+
 
 ## Roadmap
 0. [x] Set up the repo
