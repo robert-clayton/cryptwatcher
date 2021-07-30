@@ -1,6 +1,9 @@
 """The website"""
 from h2o_wave import main #pylint: disable=W0611
-from h2o_wave import Q, site, on, handle_on, ui, app
+from h2o_wave import Q, on, handle_on, ui, app
+
+
+coins = {'btc' : 'Bitcoin', 'eth' : 'Ethereum', 'xrp' : 'Ripple', 'xmr' : 'Monero', 'ltc' : 'Litecoin', 'dash' : 'Dash', 'xem' : 'NEM'}
 
 
 async def init(q: Q):
@@ -36,6 +39,19 @@ async def init(q: Q):
             ui.command(name='rename', label='Rename', icon='Edit'),
         ],
     )
+    q.page['nav'] = ui.nav_card(
+        box='1 2 2 8',
+        value='#coins/',
+        items=[
+            ui.nav_group('Cryptocurrencies', items=[
+                ui.nav_item(name=f'#coins/{key}', label=value) for key, value in coins.items()
+            ]),
+            ui.nav_group('Help', items=[
+                ui.nav_item(name='#about', label='About', icon='Info'),
+                ui.nav_item(name='#support', label='Support', icon='Help'),
+            ])
+        ],
+    )
 
     await q.page.save()
 
@@ -60,28 +76,13 @@ async def serve(q: Q):
         await init(q)
     await handle_on(q)
 
-    if '#' in q.args:
-        hash_ = q.args['#']
-        q.page['nav'] = ui.form_card(box='1 2 2 8', items=[
-            ui.text(f'#={hash_}'),
-            ui.button(name='#home', label='Back', primary=True),
-        ])
-    else:
-        q.page['nav'] = ui.nav_card(
-            box='1 2 2 8',
-            value='#menu/spam',
-            items=[
-                ui.nav_group('Menu', items=[
-                    ui.nav_item(name='#coins/nano', label='Nano'),
-                    ui.nav_item(name='#coins/fil', label='Filecoin'),
-                    ui.nav_item(name='#coin/ada', label='Cardano'),
-                    ui.nav_item(name='#coin/xlm', label='Stellar'),
-                    ui.nav_item(name='#coin/miota', label='IOTA'),
-                ]),
-                ui.nav_group('Help', items=[
-                    ui.nav_item(name='#about', label='About', icon='Info'),
-                    ui.nav_item(name='#support', label='Support', icon='Help'),
-                ])
-            ],
-        )
+    # if '#' in q.args:
+    coin = q.args['#'].split('/')[1]
+    q.page['nave'] = ui.form_card(box='3 2 8 8', items=[
+        ui.text_xl(coins[coin]),
+        ui.text(coin.upper()),
+        ui.visualization(plot='', title=coin.upper(), height=300, width=300, type='line', data=f'https://api.cryptowat.ch/markets/{coin}/ohlc',),
+        ui.button(name='#home', label='Back', primary=True),
+    ])
+        
     await q.page.save()
