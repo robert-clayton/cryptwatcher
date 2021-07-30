@@ -3,7 +3,7 @@ name: Checks - Website (CI)
 on:
   push:
     branches: [develop, master]
-    paths:    [packages/website/**]
+    paths:    [packages/website/src/**]
 
 defaults:
   run:
