@@ -7,6 +7,8 @@ authors = ["robert-clayton <41345902+robert-clayton@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 h2o-wave = "^0.17.0"
+python-dotenv = "^0.19.0"
+requests = "^2.26.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"

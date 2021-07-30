@@ -1,8 +1,8 @@
 """The website"""
+import os
 from h2o_wave import main #pylint: disable=W0611
 from h2o_wave import Q, on, handle_on, ui, app
 from dotenv import load_dotenv, find_dotenv
-import os
 import requests
 
 # Load dotenv into global environment
@@ -49,7 +49,8 @@ async def init(q: Q):
         value='#coins/',
         items=[
             ui.nav_group('Cryptocurrencies', items=[
-                ui.nav_item(name=f'#coins/{coin["ticker"]}', label=coin["name"]) for coin in coin_data
+                ui.nav_item(name=f'#coins/{coin["ticker"]}', label=coin["name"])
+                for coin in coin_data
             ]),
             ui.nav_group('Help', items=[
                 ui.nav_item(name='#about', label='About', icon='Info'),
