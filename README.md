@@ -1,7 +1,13 @@
 # cryptwatcher
 <p align="center"><img src=./res/logo.png></p>
-<p align="center"><img src=https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-predictor.yml/badge.svg?branch=master)](https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-predictor.yml> - <img src=https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-watcher.yml/badge.svg)](https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-watcher.yml> - <img src=https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-website.yml/badge.svg)](https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-website.yml></p>
-Monorepo for the CryptWatcher project.
+
+<p align="center">Monorepo for the CryptWatcher project.</p>
+
+
+## Status
+<p><img src=https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-predictor.yml/badge.svg?branch=master></p>
+<p><img src=https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-watcher.yml/badge.svg?branch=master></p>
+<p><img src=https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-website.yml/badge.svg?branch=master></p>
 
 
 ## Goal
