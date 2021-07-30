@@ -3,7 +3,7 @@ import nox #pylint: disable=E0401
 import nox_poetry #pylint: disable=E0401
 
 
-nox.options.sessions = 'lint', 'safety'
+nox.options.sessions = 'lint', 'tests', 'safety'
 
 
 @nox_poetry.session

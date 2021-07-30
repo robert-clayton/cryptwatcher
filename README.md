@@ -41,7 +41,7 @@ To create a web app and all required backend services/api that displays predicti
 0. [x] Set up the repo
 1. [ ] Create MVP version of the webapp
     - [ ] DevOps Implementation
-        - [ ] Automated testing
+        - [x] Automated testing
         - [x] Automated linting
         - [x] Automated safety checks
         - [ ] Automated deployment
@@ -57,9 +57,9 @@ To create a web app and all required backend services/api that displays predicti
     - [ ] Pulls data from database via WaveDB using API defined in the following step
 2. [ ] Create an API for the webapp
     - [ ] DevOps Implementation
-        - [ ] Automated testing
-        - [ ] Automated linting
-        - [ ] Automated safety checks
+        - [x] Automated testing
+        - [x] Automated linting
+        - [x] Automated safety checks
         - [ ] Automated deployment
     - [ ] Base API structure (e.g. endpoints, error handling, etc)
         - [ ] POST new ticker value
@@ -78,9 +78,9 @@ To create a web app and all required backend services/api that displays predicti
         - [ ] GET all sentiment values of ticker for a specific range of dates
 3. [ ] Create a headless service that obtains market data from various sources and feeds it into a remote SQLite database
     - [ ] DevOps Implementation
-        - [ ] Automated testing
-        - [ ] Automated linting
-        - [ ] Automated safety checks
+        - [x] Automated testing
+        - [x] Automated linting
+        - [x] Automated safety checks
         - [ ] Automated deployment
     - [ ] Data collection - Ticker History
     - [ ] Data collection - Tweets
@@ -92,9 +92,9 @@ To create a web app and all required backend services/api that displays predicti
     - [ ] Ability to deploy more accurately trained models
 5. [ ] Create a headless service that interacts with the trained models and provides predictions to the remote database whenever a new market condition is encountered
     - [ ] DevOps Implementation
-        - [ ] Automated testing
-        - [ ] Automated linting
-        - [ ] Automated safety checks
+        - [x] Automated testing
+        - [x] Automated linting
+        - [x] Automated safety checks
         - [ ] Automated deployment
     - [ ] Watches market conditions for changes and updates the database accordingly
     - [ ] Interacts with the trained models to provide predictions

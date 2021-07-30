@@ -3,7 +3,7 @@ import nox #pylint: disable=E0401
 import nox_poetry #pylint: disable=E0401
 
 
-nox.options.sessions = 'lint', 'safety'
+nox.options.sessions = 'lint', 'tests', 'safety'
 
 
 @nox_poetry.session
@@ -20,12 +20,12 @@ def lint(session: nox_poetry.session):
     )
 
 
-# @nox_poetry.session
-# def tests(session: nox_poetry.session):
-#     """Runs the test suite."""
-#     requirements = str(session.poetry.export_requirements())
-#     session.install('pytest', 'pytest-cov', f'-r{requirements}')
-#     session.run('pytest', '--cov=src tests/')
+@nox_poetry.session
+def tests(session: nox_poetry.session):
+    """Runs the test suite."""
+    requirements = str(session.poetry.export_requirements())
+    session.install('pytest', 'pytest-cov', f'-r{requirements}')
+    session.run('pytest', '--cov=src tests/')
 
 
 @nox_poetry.session
