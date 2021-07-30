@@ -3,7 +3,38 @@ from h2o_wave import main #pylint: disable=W0611
 from h2o_wave import Q, on, handle_on, ui, app
 
 
-coins = {'btc' : 'Bitcoin', 'eth' : 'Ethereum', 'xrp' : 'Ripple', 'xmr' : 'Monero', 'ltc' : 'Litecoin', 'dash' : 'Dash', 'xem' : 'NEM'}
+coins = {
+    'btc': 'Bitcoin',
+    'eth': 'Ethereum',
+    'xrp': 'Ripple',
+    'xmr': 'Monero',
+    'ltc': 'Litecoin',
+    'dash': 'Dash',
+    'xem': 'NEM',
+    'zec': 'Zcash',
+    'bch': 'Bitcoin Cash',
+    'eos': 'EOS',
+    'etc': 'Ethereum Classic',
+    'neo': 'Neo',
+    'qtum': 'Qtum',
+    'btg': 'Bitcoin Gold',
+    'omg': 'OmiseGO',
+    'lsk': 'Lisk',
+    'zil': 'Zilliqa',
+    'trx': 'Tron',
+    'xvg': 'Verge',
+    'steem': 'Steem',
+    'bts': 'Bitshares',
+    'dcr': 'Decred',
+    'snt': 'Status',
+    'dgb': 'Digibyte',
+    'waves': 'Waves',
+    'strat': 'Stratis',
+    'rep': 'Augur',
+    'doge': 'Dogecoin',
+    'gnt': 'Golem',
+    'dgb': 'Digibyte',
+}
 
 
 async def init(q: Q):
@@ -81,8 +112,15 @@ async def serve(q: Q):
     q.page['nave'] = ui.form_card(box='3 2 8 8', items=[
         ui.text_xl(coins[coin]),
         ui.text(coin.upper()),
-        ui.visualization(plot='', title=coin.upper(), height=300, width=300, type='line', data=f'https://api.cryptowat.ch/markets/{coin}/ohlc',),
+        # ui.visualization(
+        #     plot='',
+        #     title=coin.upper(),
+        #     height=300,
+        #     width=300,
+        #     type='line',
+        #     data=f'https://api.cryptowat.ch/markets/{coin}/ohlc',
+        # ),
         ui.button(name='#home', label='Back', primary=True),
     ])
-        
+
     await q.page.save()
