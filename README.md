@@ -48,7 +48,7 @@ To create a web app and all required backend services/api that displays predicti
         - [ ] Automated deployment
     - [ ] UI
         - [ ] Create a base layout for the webapp
-        - [ ] Can switch between showing different cyptocurrencies
+        - [x] Can switch between showing different cyptocurrencies
         - [ ] Show the name/price/info of the selected crypto
         - [ ] Link to the crypto currency's ticker history and other information sources
         - [ ] Show most recent sentiment analysis for the selected crypto
