@@ -1,4 +1,4 @@
-"""Watches for newest updates from cryptowat.ch and Twitter"""
+"""Service that watches for new updates from cryptowat.ch and Twitter about given cryptos"""
 # from datetime import datetime, timedelta
 
 import cryptowatch as cw
