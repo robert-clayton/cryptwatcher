@@ -1,25 +1,42 @@
 # cryptwatcher
-Monorepo for a crypto predictor web app
+Monorepo for a crypto predictor web app stack
 
 
 ## Goal
-To create a web app that displays predictions on the price of a crypto currency based on market conditions (e.g. ticker history, sentiment analysis, etc).
+To create a web app and all required backend services/api that displays predictions on the price of a crypto currency based on market conditions (e.g. ticker history, sentiment analysis, etc).
 
-## Development Dependencies
+
+## Dependency Requirements
+- Repo
+    - [git](https://git-scm.com/)]
 - Website
     - [Python 3.9.6](https://www.python.org/downloads/release/python-396/)
     - [Poetry](https://python-poetry.org/)
     - [Nox](https://python-nox.readthedocs.io/en/stable/)
     - [h2o-wave](https://github.com/h2oai/wave/releases/)
+- Watcher
+    - [Python 3.9.6](https://www.python.org/downloads/release/python-396/)
+    - [Poetry](https://python-poetry.org/)
+    - [Nox](https://python-nox.readthedocs.io/en/stable/)
+- Predictor
+    - [Python 3.9.6](https://www.python.org/downloads/release/python-396/)
+    - [Poetry](https://python-poetry.org/)
+    - [Nox](https://python-nox.readthedocs.io/en/stable/)
+- Models
+    - [Python 3.9.6](https://www.python.org/downloads/release/python-396/)
+    - [Poetry](https://python-poetry.org/)
+- API
+    - [Node.js 14.17.4 LTS](https://nodejs.org/en/)]
 
 
 ## Roadmap
 0. [x] Set up the repo
 1. [ ] Create MVP version of the webapp
-    - [ ] Automated testing 
-    - [x] Automated linting
-    - [x] Automated safety checks
-    - [ ] Automated deployment
+    - [ ] DevOps Implementation
+        - [ ] Automated testing
+        - [x] Automated linting
+        - [x] Automated safety checks
+        - [ ] Automated deployment
     - [ ] UI
         - [ ] Create a base layout for the webapp
         - [ ] Can switch between showing different cyptocurrencies
@@ -31,10 +48,11 @@ To create a web app that displays predictions on the price of a crypto currency 
             - [ ] Include certainty range
     - [ ] Pulls data from database via WaveDB using API defined in the following step
 2. [ ] Create an API for the webapp
-    - [ ] Automated testing
-    - [ ] Automated linting
-    - [ ] Automated safety checks
-    - [ ] Automated deployment
+    - [ ] DevOps Implementation
+        - [ ] Automated testing
+        - [ ] Automated linting
+        - [ ] Automated safety checks
+        - [ ] Automated deployment
     - [ ] Base API structure (e.g. endpoints, error handling, etc)
         - [ ] POST new ticker value
         - [ ] POST new ticker
@@ -51,10 +69,11 @@ To create a web app that displays predictions on the price of a crypto currency 
         - [ ] GET all sentiment values of ticker for a specific year
         - [ ] GET all sentiment values of ticker for a specific range of dates
 3. [ ] Create a headless service that obtains market data from various sources and feeds it into a remote SQLite database
-    - [ ] Automated testing
-    - [ ] Automated linting
-    - [ ] Automated safety checks
-    - [ ] Automated deployment
+    - [ ] DevOps Implementation
+        - [ ] Automated testing
+        - [ ] Automated linting
+        - [ ] Automated safety checks
+        - [ ] Automated deployment
     - [ ] Data collection - Ticker History
     - [ ] Data collection - Tweets
 4. [ ] Train a set of models that predict the price of a given crypto currency
@@ -64,18 +83,20 @@ To create a web app that displays predictions on the price of a crypto currency 
         - [ ] Chain output of sentiment analysis model into the price prediction model's input
     - [ ] Ability to deploy more accurately trained models
 5. [ ] Create a headless service that interacts with the trained models and provides predictions to the remote database whenever a new market condition is encountered
-    - [ ] Automated testing
-    - [ ] Automated linting
-    - [ ] Automated safety checks
-    - [ ] Automated deployment
+    - [ ] DevOps Implementation
+        - [ ] Automated testing
+        - [ ] Automated linting
+        - [ ] Automated safety checks
+        - [ ] Automated deployment
     - [ ] Watches market conditions for changes and updates the database accordingly
     - [ ] Interacts with the trained models to provide predictions
     - [ ] Provides predictions to the remote database
 6. [ ] Create a ReactJS version of the webapp using the same API as the h2o-wave version
-    - [ ] Automated testing
-    - [ ] Automated linting
-    - [ ] Automated safety checks
-    - [ ] Automated deployment
+    - [ ] DevOps Implementation
+        - [ ] Automated testing
+        - [ ] Automated linting
+        - [ ] Automated safety checks
+        - [ ] Automated deployment
     - [ ] Uses the same API as the h2o-wave version
     - [ ] Interactive graphs
     - [ ] User-suggested cryptocurrencies to begin tracking
