@@ -4,6 +4,9 @@ on:
   push:
     branches: [develop, master]
     paths:    [packages/website/src/**]
+  pull_request:
+    types:    [edited, assigned, opened, synchronize, reopened]
+    paths:    [packages/website/src/**]
 
 defaults:
   run:
