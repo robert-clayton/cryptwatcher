@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const dummyData = [{
         "name": "Bitcoin",
-        "symbol": "BTC",
+        "ticker": "BTC",
         "rank": "1",
         "price_usd": "10,000.00",
         "price_btc": "1.0",
@@ -30,7 +30,7 @@ const dummyData = [{
     }, 
     {
         "name": "Ethereum",
-        "symbol": "ETH",
+        "ticker": "ETH",
         "rank": "2",
         "price_usd": "10,000.00",
         "price_btc": "1.0",
@@ -57,7 +57,7 @@ const dummyData = [{
     },
     {
         "name": "Bitcoin Cash",
-        "symbol": "BCH",
+        "ticker": "BCH",
         "rank": "3",
         "price_usd": "10,000.00",
         "price_btc": "1.0",
@@ -84,7 +84,7 @@ const dummyData = [{
     },
     {
         "name": "Litecoin",
-        "symbol": "LTC",
+        "ticker": "LTC",
         "rank": "4",
         "price_usd": "10,000.00",
         "price_btc": "1.0",
@@ -111,7 +111,7 @@ const dummyData = [{
     },
     {
         "name": "Dash",
-        "symbol": "DASH",
+        "ticker": "DASH",
         "rank": "5",
         "price_usd": "10,000.00",
         "price_btc": "1.0",
@@ -138,7 +138,7 @@ const dummyData = [{
     },
     {
         "name": "Monero",
-        "symbol": "XMR",
+        "ticker": "XMR",
         "rank": "6",
         "price_usd": "10,000.00",
         "price_btc": "1.0",
@@ -165,7 +165,7 @@ const dummyData = [{
     },
     {
         "name": "Zcash",
-        "symbol": "ZEC",
+        "ticker": "ZEC",
         "rank": "7",
         "price_usd": "10,000.00",
         "price_btc": "1.0",
@@ -192,7 +192,7 @@ const dummyData = [{
     },
     {
         "name": "NEO",
-        "symbol": "NEO",
+        "ticker": "NEO",
         "rank": "8",
         "price_usd": "10,000.00",
         "price_btc": "1.0",
@@ -219,7 +219,7 @@ const dummyData = [{
     },
     {
         "name": "EOS",
-        "symbol": "EOS",
+        "ticker": "EOS",
         "rank": "9",
         "price_usd": "10,000.00",
         "price_btc": "1.0",
@@ -246,7 +246,7 @@ const dummyData = [{
     },
     {
         "name": "Filecoin",
-        "symbol": "FIL",
+        "ticker": "FIL",
         "rank": "10",
         "price_usd": "10,000.00",
         "price_btc": "1.0",
@@ -273,7 +273,7 @@ const dummyData = [{
     },
     {
         "name": "Ripple",
-        "symbol": "XRP",
+        "ticker": "XRP",
         "rank": "11",
         "price_usd": "10,000.00",
         "price_btc": "1.0",
@@ -303,7 +303,7 @@ const dummyData = [{
 function getTickerIndex(ticker) {
     ticker = ticker.toUpperCase();
     for (var i = 0; i < dummyData.length; i++) {
-        if (dummyData[i].symbol === ticker)
+        if (dummyData[i].ticker === ticker)
             return i
     }
     return -1;
@@ -317,7 +317,7 @@ router.get('/', function(req, res) {
 
 // Get a list of all coins' tickers
 router.get('/tickers', function(req, res) {
-    res.json({'tickers' : dummyData.map(({ symbol }) => symbol)});
+    res.json({'tickers' : dummyData.map(({ ticker }) => ticker)});
 });
 
 

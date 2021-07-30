@@ -1,51 +1,26 @@
 """The website"""
 from h2o_wave import main #pylint: disable=W0611
 from h2o_wave import Q, on, handle_on, ui, app
+from dotenv import load_dotenv, find_dotenv
+import os
+import requests
 
+# Load dotenv into global environment
+load_dotenv(find_dotenv())
 
-coins = {
-    'btc': 'Bitcoin',
-    'eth': 'Ethereum',
-    'xrp': 'Ripple',
-    'xmr': 'Monero',
-    'ltc': 'Litecoin',
-    'dash': 'Dash',
-    'xem': 'NEM',
-    'zec': 'Zcash',
-    'bch': 'Bitcoin Cash',
-    'eos': 'EOS',
-    'etc': 'Ethereum Classic',
-    'neo': 'Neo',
-    'qtum': 'Qtum',
-    'btg': 'Bitcoin Gold',
-    'omg': 'OmiseGO',
-    'lsk': 'Lisk',
-    'zil': 'Zilliqa',
-    'trx': 'Tron',
-    'xvg': 'Verge',
-    'steem': 'Steem',
-    'bts': 'Bitshares',
-    'dcr': 'Decred',
-    'snt': 'Status',
-    'waves': 'Waves',
-    'strat': 'Stratis',
-    'rep': 'Augur',
-    'doge': 'Dogecoin',
-    'gnt': 'Golem',
-    'dgb': 'Digibyte',
-}
+# Get coin data from the API
+api_url = os.getenv('API_URL')
+coin_data = requests.get(api_url + '/v1/coins').json()
 
 
 async def init(q: Q):
     """Initialize the app"""
-    q.page['meta'] = ui.meta_card(box='', theme='dark')
-
+    q.page['meta'] = ui.meta_card(box='', theme='default')
     q.page['header'] = ui.header_card(
         box='1 1 10 1',
         title='Cryptwatcher',
         subtitle='Take a chance and peer into the future of cryptocurrency!',
     )
-
     q.page['toolbar'] = ui.toolbar_card(
         box='1 10 10 1',
         items=[
@@ -74,7 +49,7 @@ async def init(q: Q):
         value='#coins/',
         items=[
             ui.nav_group('Cryptocurrencies', items=[
-                ui.nav_item(name=f'#coins/{key}', label=value) for key, value in coins.items()
+                ui.nav_item(name=f'#coins/{coin["ticker"]}', label=coin["name"]) for coin in coin_data
             ]),
             ui.nav_group('Help', items=[
                 ui.nav_item(name='#about', label='About', icon='Info'),
@@ -82,7 +57,6 @@ async def init(q: Q):
             ])
         ],
     )
-
     await q.page.save()
 
 
@@ -90,27 +64,17 @@ async def init(q: Q):
 async def toggle_darkmode(q: Q):
     """Toggles dark mode"""
     q.page['meta'].theme = 'dark' if q.args.darkmode_toggle else 'default'
+    await q.page.save()
 
 
-@on('#home')
-async def remove_hash(q: Q):
-    """Removes the hash from args"""
-    del q.args['#']
-
-
-@app('/')
-async def serve(q: Q):
-    """Serves the main page"""
-    if not q.client.initialized:
-        q.client.initialized = True
-        await init(q)
-    await handle_on(q)
-
-    # if '#' in q.args:
-    coin = q.args['#'].split('/')[1]
-    q.page['nave'] = ui.form_card(box='3 2 8 8', items=[
-        ui.text_xl(coins[coin]),
-        ui.text(coin.upper()),
+@on('#coins/{ticker}')
+async def show_coins(q: Q):
+    """Show the coin data"""
+    ticker = q.args['#'].split('/')[1]
+    coin = next(coin for coin in coin_data if coin['ticker'] == ticker)
+    q.page['info'] = ui.form_card(box='3 2 8 8', items=[
+        ui.text_xl(coin['name']),
+        ui.text(coin['ticker']),
         # ui.visualization(
         #     plot='',
         #     title=coin.upper(),
@@ -121,5 +85,21 @@ async def serve(q: Q):
         # ),
         ui.button(name='#home', label='Back', primary=True),
     ])
+    await q.page.save()
 
+@on('#home')
+async def go_home(q: Q):
+    """Go home"""
+    q.page['info'] = ui.form_card(box='3 2 8 8', items=[])
+    await q.page.save()
+
+
+@app('/')
+async def serve(q: Q):
+    """Serves the main page"""
+    if not q.client.initialized:
+        q.client.initialized = True
+        q.args['#'] = '#home'
+        await init(q)
+    await handle_on(q)
     await q.page.save()
