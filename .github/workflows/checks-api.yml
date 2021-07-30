@@ -1,0 +1,38 @@
+name: Checks - Website (CI)
+
+on:
+  push:
+    branches: [develop, master]
+    paths:    [apis/cryptinfo/src/**]
+  pull_request:
+    types:    [edited, assigned, opened, synchronize, reopened]
+    paths:    [apis/cryptinfo/src/**]
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  nox:
+    name: ESLint Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Lint
+        run: cd apis/cryptinfo && yarn && yarn lint
+  dispatch:
+    name:     Dispatch Build
+    runs-on:  ubuntu-latest
+    needs:    [nox]
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          CURRENT_BRANCH=${${{ github.ref }}#refs/heads/}
+          echo "CURRENT_BRANCH=$CURRENT_BRANCH" >> $GITHUB_ENV
+      - uses: peter-evans/repository-dispatch@v1
+        with:
+          token:      ${{ github.token }}
+          repository: ${{ github.repository }}
+          event-type: 'build'
+          client-payload: '{"type": "build", "branch": "${{ env.CURRENT_BRANCH }}"}'
