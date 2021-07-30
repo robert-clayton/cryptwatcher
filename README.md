@@ -5,10 +5,10 @@
 
 
 ## Status
-<p><img src=https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-predictor.yml/badge.svg?branch=master></p>
-<p><img src=https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-watcher.yml/badge.svg?branch=master></p>
-<p><img src=https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-website.yml/badge.svg?branch=master></p>
-<p><img src=https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-api.yml/badge.svg?branch=master></p>
+[![Checks - Cryptinfo (CI)](https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-api.yml/badge.svg?branch=master)](https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-api.yml)
+[![Checks - Predictor (CI)](https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-predictor.yml/badge.svg?branch=master)](https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-predictor.yml)
+[![Checks - Watcher (CI)](https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-watcher.yml/badge.svg?branch=master)](https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-watcher.yml)
+[![Checks - Website (CI)](https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-website.yml/badge.svg?branch=master)](https://github.com/robert-clayton/cryptwatcher/actions/workflows/checks-website.yml)
 
 ## Goal
 To create a web app and all required backend services/api that displays predictions on the price of a crypto currency based on market conditions (e.g. ticker history, sentiment analysis, etc).
