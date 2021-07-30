@@ -1,5 +1,5 @@
 # cryptwatcher
-Monorepo for a crypto predictor web app stack
+Monorepo for the CryptWatcher project.
 
 
 ## Goal
