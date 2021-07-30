@@ -26,7 +26,7 @@ To create a web app and all required backend services/api that displays predicti
     - [Python 3.9.6](https://www.python.org/downloads/release/python-396/)
     - [Poetry](https://python-poetry.org/)
 - API
-    - [Node.js 14.17.4 LTS](https://nodejs.org/en/)]
+    - [Node.js 14.17.4 LTS](https://nodejs.org/en/)
 
 
 ## Roadmap
