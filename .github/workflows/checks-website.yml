@@ -27,6 +27,7 @@ jobs:
         with:
           path: ~/.cache/pypoetry/virtualenvs
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+      - run: pip install nox-poetry
       - run: cd packages/website && nox
   dispatch:
     name:     Dispatch Build
