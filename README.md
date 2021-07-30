@@ -8,7 +8,7 @@ To create a web app and all required backend services/api that displays predicti
 
 ## Dependency Requirements
 - Repo
-    - [git](https://git-scm.com/)]
+    - [git](https://git-scm.com/)
 - Website
     - [Python 3.9.6](https://www.python.org/downloads/release/python-396/)
     - [Poetry](https://python-poetry.org/)
