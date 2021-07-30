@@ -27,7 +27,6 @@ coins = {
     'bts': 'Bitshares',
     'dcr': 'Decred',
     'snt': 'Status',
-    'dgb': 'Digibyte',
     'waves': 'Waves',
     'strat': 'Stratis',
     'rep': 'Augur',
