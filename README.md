@@ -1,4 +1,6 @@
 # cryptwatcher
+<p align="center"><img src=./res/logo.png></p>
+
 Monorepo for the CryptWatcher project.
 
 
