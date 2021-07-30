@@ -7,6 +7,7 @@ on:
   pull_request:
     types:    [edited, assigned, opened, synchronize, reopened]
     paths:    [packages/predictor/src/**]
+  workflow_dispatch:
 
 defaults:
   run:
