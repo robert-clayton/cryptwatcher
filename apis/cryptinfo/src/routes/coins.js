@@ -323,7 +323,7 @@ function getTickerIndex(ticker) {
  *              description: Returns all coins' data
  */
 router.get('/', function(req, res) {
-    res.json({'coins': dummyData});
+    res.json({'result': dummyData});
 });
 
 
@@ -339,7 +339,7 @@ router.get('/', function(req, res) {
  *              description: Returns a list of all coins' data
  */
 router.get('/tickers', function(req, res) {
-    res.json({'tickers' : dummyData.map(({ ticker }) => ticker)});
+    res.json({'result' : dummyData.map(({ ticker }) => ticker)});
 });
 
 
@@ -367,7 +367,7 @@ router.get('/:ticker', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
         return res.status(404).send({'message': 'Not found'});
-    res.json({'coin': dummyData[index]});
+    res.json({'result': dummyData[index]});
 });
 
 
@@ -395,7 +395,7 @@ router.get('/:ticker', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
         return res.status(404).send({'message': 'Not found'});
-    res.json({'name': dummyData[index].name});
+    res.json({'result': dummyData[index].name});
 });
 
 
@@ -425,7 +425,7 @@ router.get('/:ticker/sentiments', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
         return res.status(404).send({'message': 'Not found'});
-    res.json({'sentiment': dummyData[index].sentiments});
+    res.json({'result': dummyData[index].sentiments});
 });
 
 
@@ -453,7 +453,7 @@ router.get('/:ticker/recentSentiment', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
         return res.status(404).send({'message': 'Not found'});
-    res.json(dummyData[index].sentiments[dummyData[index].sentiments.length - 1]);
+    res.json({'result': dummyData[index].sentiments[dummyData[index].sentiments.length - 1]});
 });
 
 
@@ -500,7 +500,7 @@ router.get('/:ticker/previousSentiments', function(req, res) {
         if (differenceInDate(today, sentimentDate) <= req.body.numDays)
             sentiment.push(item);
     });
-    res.json({'sentiment': sentiment});
+    res.json({'result': sentiment});
 });
 
 
@@ -549,7 +549,7 @@ router.get('/:ticker/specificSentiments', function(req, res) {
         if (req.body.startDate <= item.date && item.date <= req.body.endDate)
             sentiment.push(item);
     });
-    res.json({'sentiment': sentiment});
+    res.json({'result': sentiment});
 });
 
 
@@ -577,7 +577,7 @@ router.get('/:ticker/values', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
         return res.status(404).send({'message': 'Not found'});
-    res.json({'marketValues': dummyData[index].marketValues});
+    res.json({'result': dummyData[index].marketValues});
 });
 
 
@@ -605,7 +605,7 @@ router.get('/:ticker/recentValue', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
         return res.status(404).send({'message': 'Not found'});
-    res.json({'marketValue': dummyData[index].marketValues[dummyData[index].marketValues.length - 1]});
+    res.json({'result': dummyData[index].marketValues[dummyData[index].marketValues.length - 1]});
 });
 
 
@@ -652,7 +652,7 @@ router.get('/:ticker/previousValues', function(req, res) {
         if (differenceInDate(today, valueDate) <= req.body.numDays)
             values.push(item);
     });
-    res.json({'marketValues': values});
+    res.json({'result': values});
 });
 
 
@@ -701,7 +701,7 @@ router.get('/:ticker/specificValues', function(req, res) {
         if (req.body.startDate <= item.date && item.date <= req.body.endDate)
             values.push(item);
     });
-    res.json({'marketValues': values});
+    res.json({'result': values});
 });
 
 
@@ -786,7 +786,7 @@ router.get('/:ticker/prediction/', function(req, res) {
     if (!(predictionDate in dummyData[index].predictions))
         return res.status(404).send({'message': 'Not found'});
     const prediction = dummyData[index].predictions[predictionDate];
-    res.json({'prediction': prediction});
+    res.json({'result': prediction});
 });
 
 

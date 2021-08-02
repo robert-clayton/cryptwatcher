@@ -20,29 +20,29 @@ api_url = os.getenv('API_URL')
 ####   an API call that queries everything needed for a single session.
 def get_all_coin_data() -> dict:
     """Get coins from the API"""
-    return requests.get(f'{api_url}/coins').json()['coins']
+    return requests.get(f'{api_url}/coins').json()['result']
 
 
 def get_coin_data(ticker: str) -> dict:
     """Get coin data by ticker from the API"""
-    return requests.get(f'{api_url}/coins/{ticker}').json()['coin']
+    return requests.get(f'{api_url}/coins/{ticker}').json()['result']
 
 
-def get_tickers() -> dict:
+def get_tickers() -> list[str]:
     """Get all tickers from the API"""
-    return requests.get(f'{api_url}/coins/tickers').json()['tickers']
+    return requests.get(f'{api_url}/coins/tickers').json()['result']
 
 
 def get_coin_price(ticker: str) -> dict:
     """Get the current price of a coin from the API"""
-    return requests.get(f'{api_url}/coins/{ticker}/recentValue').json()['marketValue']
+    return requests.get(f'{api_url}/coins/{ticker}/recentValue').json()['result']
 
 
-def get_coin_name(ticker: str) -> dict:
+def get_coin_name(ticker: str) -> str:
     """Get the name of a coin"""
     response = requests.get(f'{api_url}/coins/{ticker}/name')
     if response.ok:
-        return response.json()['name']
+        return response.json()['result']
     return 'INVALID'
 
 async def init(q: Q):
