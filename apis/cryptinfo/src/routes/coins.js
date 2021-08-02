@@ -367,7 +367,35 @@ router.get('/:ticker', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
         return res.status(404).send({'message': 'Not found'});
-    res.json(dummyData[index]);
+    res.json({'coin': dummyData[index]});
+});
+
+
+/**
+ * @openapi
+ * /coins/{ticker}/name:
+ *  get:
+ *      description: Get a specific coin's name
+ *      tags: [coins]
+ *      produces: [application/json]
+ *      parameters:
+ *          - name: ticker
+ *            description: The ticker of the coin
+ *            in: path
+ *            required: true
+ *            type: string
+ *            example: 'btc'
+ *      responses:
+ *          200:
+ *              description: Returns a specific coin's name
+ *          404:
+ *              description: Ticker not found
+ */
+ router.get('/:ticker/name', function(req, res) {
+    const index = getTickerIndex(req.params.ticker);
+    if (index == -1)
+        return res.status(404).send({'message': 'Not found'});
+    res.json({'name': dummyData[index].name});
 });
 
 
@@ -577,9 +605,8 @@ router.get('/:ticker/recentValue', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
         return res.status(404).send({'message': 'Not found'});
-    res.json(dummyData[index].marketValues[dummyData[index].marketValues.length - 1]);
+    res.json({'marketValue': dummyData[index].marketValues[dummyData[index].marketValues.length - 1]});
 });
-
 
 
 /**

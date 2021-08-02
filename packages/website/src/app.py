@@ -11,16 +11,43 @@ load_dotenv(find_dotenv())
 
 # Get coin data from the API
 api_url = os.getenv('API_URL')
-try:
-    coin_data = requests.get(api_url + '/coins').json()['coins']
-    API_UP = True
-except requests.exceptions.ConnectionError:
-    API_UP = False
-    coin_data = []
 
+
+#TODO: Replace most of these once the API is connected to a database
+####   Don't want to have the API return everything stored in dummy data
+####   for now as that just seems like a _poor_ idea
+####   Once the API is connected to a database, these will be replaced with
+####   an API call that queries everything needed for a single session.
+def get_all_coin_data() -> dict:
+    """Get coins from the API"""
+    return requests.get(f'{api_url}/coins').json()['coins']
+
+
+def get_coin_data(ticker: str) -> dict:
+    """Get coin data by ticker from the API"""
+    return requests.get(f'{api_url}/coins/{ticker}').json()['coin']
+
+
+def get_tickers() -> dict:
+    """Get all tickers from the API"""
+    return requests.get(f'{api_url}/coins/tickers').json()['tickers']
+
+
+def get_coin_price(ticker: str) -> dict:
+    """Get the current price of a coin from the API"""
+    return requests.get(f'{api_url}/coins/{ticker}/recentValue').json()['marketValue']
+
+
+def get_coin_name(ticker: str) -> dict:
+    """Get the name of a coin"""
+    response = requests.get(f'{api_url}/coins/{ticker}/name')
+    if response.ok:
+        return response.json()['name']
+    return 'INVALID'
 
 async def init(q: Q):
     """Initialize the app"""
+    q.args.tickers = get_tickers()
     q.page['meta'] = ui.meta_card(box='', theme='default')
     q.page['header'] = ui.header_card(
         box='1 1 9 1',
@@ -32,8 +59,8 @@ async def init(q: Q):
         value='#coins/',
         items=[
             ui.nav_group('Cryptocurrencies', items=[
-                ui.nav_item(name=f'#coins/{coin["ticker"]}', label=coin["name"])
-                for coin in coin_data
+                ui.nav_item(name=f'#coins/{ticker}', label=ticker)
+                for ticker in q.args.tickers
             ]),
             ui.nav_group('Help', items=[
                 ui.nav_item(name='#repo', label='Repository', icon='Info'),
@@ -58,7 +85,7 @@ async def open_github(q: Q):
 
 
 @on('#api')
-async def open_github(q: Q):
+async def open_api(q: Q):
     """OpenAPI Documentation"""
     webbrowser.open('http://localhost:5000/openapi/')
     await q.page.save()
@@ -75,10 +102,10 @@ async def toggle_darkmode(q: Q):
 async def show_coins(q: Q):
     """Show the coin data"""
     ticker = q.args['#'].split('/')[1]
-    coin = next(coin for coin in coin_data if coin['ticker'] == ticker)
     q.page['info'] = ui.form_card(box='3 2 7 8', items=[
-        ui.text_xl(coin['name']),
-        ui.text(coin['ticker']),
+        ui.text_xl(get_coin_name(ticker)),
+        ui.text(ticker),
+        ui.text_s(f'${get_coin_price(ticker)["priceUSD"]}'),
         # ui.visualization(
         #     plot='',
         #     title=coin.upper(),
