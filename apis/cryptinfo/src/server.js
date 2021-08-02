@@ -19,7 +19,7 @@ const options = {
 };
 
 
-const openapiSpecification = await swaggerJSDoc(options)
+const openapiSpecification = swaggerJSDoc(options)
 
 
 app.get('/json', (req, res) => {
