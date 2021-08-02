@@ -1,25 +1,25 @@
-const differenceInDate = require("../helpers/difference_in_date");
+const differenceInDate = require("../helpers/differenceInDate");
 const express = require("express");
 const router = express.Router();
 const dummyData = [{
         "name": "Bitcoin",
         "ticker": "BTC",
         "rank": "1",
-        "price_usd": "10,000.00",
-        "price_btc": "1.0",
-        "24h_volume_usd": "1,000,000,000.00",
-        "market_cap_usd": "10,000,000,000.00",
-        "available_supply": "10,000,000,000.00",
-        "total_supply": "10,000,000,000.00",
-        "percent_change_1h": "0.00",
-        "percent_change_24h": "0.00",
-        "percent_change_7d": "0.00",
-        "last_updated_sentiment": "1516244800000",
-        "last_updated_market": "1516244800000",
-        "market_values": [{
+        "priceUSD": "10,000.00",
+        "priceBTC": "1.0",
+        "24hVolumeUSD": "1,000,000,000.00",
+        "marketCapUSD": "10,000,000,000.00",
+        "availableSupply": "10,000,000,000.00",
+        "totalSupply": "10,000,000,000.00",
+        "percentChange1H": "0.00",
+        "percentChange24H": "0.00",
+        "percentChange7D": "0.00",
+        "lastUpdatedSentiment": "1516244800000",
+        "lastUpdatedMarket": "1516244800000",
+        "marketValues": [{
             "date": 1627629490000,
-            "price_usd": "10,000.00",
-            "price_btc": "1.0",
+            "priceUSD": "10,000.00",
+            "priceBTC": "1.0",
         }],
         "sentiments": [{
             "date": 1627629490000,
@@ -32,21 +32,21 @@ const dummyData = [{
         "name": "Ethereum",
         "ticker": "ETH",
         "rank": "2",
-        "price_usd": "10,000.00",
-        "price_btc": "1.0",
-        "24h_volume_usd": "1,000,000,000.00",
-        "market_cap_usd": "10,000,000,000.00",
-        "available_supply": "10,000,000,000.00",
-        "total_supply": "10,000,000,000.00",
-        "percent_change_1h": "0.00",
-        "percent_change_24h": "0.00",
-        "percent_change_7d": "0.00",
-        "last_updated_sentiment": "1516244800000",
-        "last_updated_market": "1516244800000",
-        "market_values": [{
+        "priceUSD": "10,000.00",
+        "priceBTC": "1.0",
+        "24hVolumeUSD": "1,000,000,000.00",
+        "marketCapUSD": "10,000,000,000.00",
+        "availableSupply": "10,000,000,000.00",
+        "totalSupply": "10,000,000,000.00",
+        "percentChange1H": "0.00",
+        "percentChange24H": "0.00",
+        "percentChange7D": "0.00",
+        "lastUpdatedSentiment": "1516244800000",
+        "lastUpdatedMarket": "1516244800000",
+        "marketValues": [{
             "date": 1627629490000,
-            "price_usd": "10,000.00",
-            "price_btc": "1.0",
+            "priceUSD": "10,000.00",
+            "priceBTC": "1.0",
         }],
         "sentiments": [{
             "date": 1627629490000,
@@ -59,21 +59,21 @@ const dummyData = [{
         "name": "Bitcoin Cash",
         "ticker": "BCH",
         "rank": "3",
-        "price_usd": "10,000.00",
-        "price_btc": "1.0",
-        "24h_volume_usd": "1,000,000,000.00",
-        "market_cap_usd": "10,000,000,000.00",
-        "available_supply": "10,000,000,000.00",
-        "total_supply": "10,000,000,000.00",
-        "percent_change_1h": "0.00",
-        "percent_change_24h": "0.00",
-        "percent_change_7d": "0.00",
-        "last_updated_sentiment": "1516244800000",
-        "last_updated_market": "1516244800000",
-        "market_values": [{
+        "priceUSD": "10,000.00",
+        "priceBTC": "1.0",
+        "24hVolumeUSD": "1,000,000,000.00",
+        "marketCapUSD": "10,000,000,000.00",
+        "availableSupply": "10,000,000,000.00",
+        "totalSupply": "10,000,000,000.00",
+        "percentChange1H": "0.00",
+        "percentChange24H": "0.00",
+        "percentChange7D": "0.00",
+        "lastUpdatedSentiment": "1516244800000",
+        "lastUpdatedMarket": "1516244800000",
+        "marketValues": [{
             "date": 1627629490000,
-            "price_usd": "10,000.00",
-            "price_btc": "1.0",
+            "priceUSD": "10,000.00",
+            "priceBTC": "1.0",
         }],
         "sentiments": [{
             "date": 1627629490000,
@@ -86,21 +86,21 @@ const dummyData = [{
         "name": "Litecoin",
         "ticker": "LTC",
         "rank": "4",
-        "price_usd": "10,000.00",
-        "price_btc": "1.0",
-        "24h_volume_usd": "1,000,000,000.00",
-        "market_cap_usd": "10,000,000,000.00",
-        "available_supply": "10,000,000,000.00",
-        "total_supply": "10,000,000,000.00",
-        "percent_change_1h": "0.00",
-        "percent_change_24h": "0.00",
-        "percent_change_7d": "0.00",
-        "last_updated_sentiment": "1516244800000",
-        "last_updated_market": "1516244800000",
-        "market_values": [{
+        "priceUSD": "10,000.00",
+        "priceBTC": "1.0",
+        "24hVolumeUSD": "1,000,000,000.00",
+        "marketCapUSD": "10,000,000,000.00",
+        "availableSupply": "10,000,000,000.00",
+        "totalSupply": "10,000,000,000.00",
+        "percentChange1H": "0.00",
+        "percentChange24H": "0.00",
+        "percentChange7D": "0.00",
+        "lastUpdatedSentiment": "1516244800000",
+        "lastUpdatedMarket": "1516244800000",
+        "marketValues": [{
             "date": 1627629490000,
-            "price_usd": "10,000.00",
-            "price_btc": "1.0",
+            "priceUSD": "10,000.00",
+            "priceBTC": "1.0",
         }],
         "sentiments": [{
             "date": 1627629490000,
@@ -113,21 +113,21 @@ const dummyData = [{
         "name": "Dash",
         "ticker": "DASH",
         "rank": "5",
-        "price_usd": "10,000.00",
-        "price_btc": "1.0",
-        "24h_volume_usd": "1,000,000,000.00",
-        "market_cap_usd": "10,000,000,000.00",
-        "available_supply": "10,000,000,000.00",
-        "total_supply": "10,000,000,000.00",
-        "percent_change_1h": "0.00",
-        "percent_change_24h": "0.00",
-        "percent_change_7d": "0.00",
-        "last_updated_sentiment": "1516244800000",
-        "last_updated_market": "1516244800000",
-        "market_values": [{
+        "priceUSD": "10,000.00",
+        "priceBTC": "1.0",
+        "24hVolumeUSD": "1,000,000,000.00",
+        "marketCapUSD": "10,000,000,000.00",
+        "availableSupply": "10,000,000,000.00",
+        "totalSupply": "10,000,000,000.00",
+        "percentChange1H": "0.00",
+        "percentChange24H": "0.00",
+        "percentChange7D": "0.00",
+        "lastUpdatedSentiment": "1516244800000",
+        "lastUpdatedMarket": "1516244800000",
+        "marketValues": [{
             "date": 1627629490000,
-            "price_usd": "10,000.00",
-            "price_btc": "1.0",
+            "priceUSD": "10,000.00",
+            "priceBTC": "1.0",
         }],
         "sentiments": [{
             "date": 1627629490000,
@@ -140,21 +140,21 @@ const dummyData = [{
         "name": "Monero",
         "ticker": "XMR",
         "rank": "6",
-        "price_usd": "10,000.00",
-        "price_btc": "1.0",
-        "24h_volume_usd": "1,000,000,000.00",
-        "market_cap_usd": "10,000,000,000.00",
-        "available_supply": "10,000,000,000.00",
-        "total_supply": "10,000,000,000.00",
-        "percent_change_1h": "0.00",
-        "percent_change_24h": "0.00",
-        "percent_change_7d": "0.00",
-        "last_updated_sentiment": "1516244800000",
-        "last_updated_market": "1516244800000",
-        "market_values": [{
+        "priceUSD": "10,000.00",
+        "priceBTC": "1.0",
+        "24hVolumeUSD": "1,000,000,000.00",
+        "marketCapUSD": "10,000,000,000.00",
+        "availableSupply": "10,000,000,000.00",
+        "totalSupply": "10,000,000,000.00",
+        "percentChange1H": "0.00",
+        "percentChange24H": "0.00",
+        "percentChange7D": "0.00",
+        "lastUpdatedSentiment": "1516244800000",
+        "lastUpdatedMarket": "1516244800000",
+        "marketValues": [{
             "date": 1627629490000,
-            "price_usd": "10,000.00",
-            "price_btc": "1.0",
+            "priceUSD": "10,000.00",
+            "priceBTC": "1.0",
         }],
         "sentiments": [{
             "date": 1627629490000,
@@ -167,21 +167,21 @@ const dummyData = [{
         "name": "Zcash",
         "ticker": "ZEC",
         "rank": "7",
-        "price_usd": "10,000.00",
-        "price_btc": "1.0",
-        "24h_volume_usd": "1,000,000,000.00",
-        "market_cap_usd": "10,000,000,000.00",
-        "available_supply": "10,000,000,000.00",
-        "total_supply": "10,000,000,000.00",
-        "percent_change_1h": "0.00",
-        "percent_change_24h": "0.00",
-        "percent_change_7d": "0.00",
-        "last_updated_sentiment": "1516244800000",
-        "last_updated_market": "1516244800000",
-        "market_values": [{
+        "priceUSD": "10,000.00",
+        "priceBTC": "1.0",
+        "24hVolumeUSD": "1,000,000,000.00",
+        "marketCapUSD": "10,000,000,000.00",
+        "availableSupply": "10,000,000,000.00",
+        "totalSupply": "10,000,000,000.00",
+        "percentChange1H": "0.00",
+        "percentChange24H": "0.00",
+        "percentChange7D": "0.00",
+        "lastUpdatedSentiment": "1516244800000",
+        "lastUpdatedMarket": "1516244800000",
+        "marketValues": [{
             "date": 1627629490000,
-            "price_usd": "10,000.00",
-            "price_btc": "1.0",
+            "priceUSD": "10,000.00",
+            "priceBTC": "1.0",
         }],
         "sentiments": [{
             "date": 1627629490000,
@@ -194,21 +194,21 @@ const dummyData = [{
         "name": "NEO",
         "ticker": "NEO",
         "rank": "8",
-        "price_usd": "10,000.00",
-        "price_btc": "1.0",
-        "24h_volume_usd": "1,000,000,000.00",
-        "market_cap_usd": "10,000,000,000.00",
-        "available_supply": "10,000,000,000.00",
-        "total_supply": "10,000,000,000.00",
-        "percent_change_1h": "0.00",
-        "percent_change_24h": "0.00",
-        "percent_change_7d": "0.00",
-        "last_updated_sentiment": "1516244800000",
-        "last_updated_market": "1516244800000",
-        "market_values": [{
+        "priceUSD": "10,000.00",
+        "priceBTC": "1.0",
+        "24hVolumeUSD": "1,000,000,000.00",
+        "marketCapUSD": "10,000,000,000.00",
+        "availableSupply": "10,000,000,000.00",
+        "totalSupply": "10,000,000,000.00",
+        "percentChange1H": "0.00",
+        "percentChange24H": "0.00",
+        "percentChange7D": "0.00",
+        "lastUpdatedSentiment": "1516244800000",
+        "lastUpdatedMarket": "1516244800000",
+        "marketValues": [{
             "date": 1627629490000,
-            "price_usd": "10,000.00",
-            "price_btc": "1.0",
+            "priceUSD": "10,000.00",
+            "priceBTC": "1.0",
         }],
         "sentiments": [{
             "date": 1627629490000,
@@ -221,21 +221,21 @@ const dummyData = [{
         "name": "EOS",
         "ticker": "EOS",
         "rank": "9",
-        "price_usd": "10,000.00",
-        "price_btc": "1.0",
-        "24h_volume_usd": "1,000,000,000.00",
-        "market_cap_usd": "10,000,000,000.00",
-        "available_supply": "10,000,000,000.00",
-        "total_supply": "10,000,000,000.00",
-        "percent_change_1h": "0.00",
-        "percent_change_24h": "0.00",
-        "percent_change_7d": "0.00",
-        "last_updated_sentiment": "1516244800000",
-        "last_updated_market": "1516244800000",
-        "market_values": [{
+        "priceUSD": "10,000.00",
+        "priceBTC": "1.0",
+        "24hVolumeUSD": "1,000,000,000.00",
+        "marketCapUSD": "10,000,000,000.00",
+        "availableSupply": "10,000,000,000.00",
+        "totalSupply": "10,000,000,000.00",
+        "percentChange1H": "0.00",
+        "percentChange24H": "0.00",
+        "percentChange7D": "0.00",
+        "lastUpdatedSentiment": "1516244800000",
+        "lastUpdatedMarket": "1516244800000",
+        "marketValues": [{
             "date": 1627629490000,
-            "price_usd": "10,000.00",
-            "price_btc": "1.0",
+            "priceUSD": "10,000.00",
+            "priceBTC": "1.0",
         }],
         "sentiments": [{
             "date": 1627629490000,
@@ -248,21 +248,21 @@ const dummyData = [{
         "name": "Filecoin",
         "ticker": "FIL",
         "rank": "10",
-        "price_usd": "10,000.00",
-        "price_btc": "1.0",
-        "24h_volume_usd": "1,000,000,000.00",
-        "market_cap_usd": "10,000,000,000.00",
-        "available_supply": "10,000,000,000.00",
-        "total_supply": "10,000,000,000.00",
-        "percent_change_1h": "0.00",
-        "percent_change_24h": "0.00",
-        "percent_change_7d": "0.00",
-        "last_updated_sentiment": "1516244800000",
-        "last_updated_market": "1516244800000",
-        "market_values": [{
+        "priceUSD": "10,000.00",
+        "priceBTC": "1.0",
+        "24hVolumeUSD": "1,000,000,000.00",
+        "marketCapUSD": "10,000,000,000.00",
+        "availableSupply": "10,000,000,000.00",
+        "totalSupply": "10,000,000,000.00",
+        "percentChange1H": "0.00",
+        "percentChange24H": "0.00",
+        "percentChange7D": "0.00",
+        "lastUpdatedSentiment": "1516244800000",
+        "lastUpdatedMarket": "1516244800000",
+        "marketValues": [{
             "date": 1627629490000,
-            "price_usd": "10,000.00",
-            "price_btc": "1.0",
+            "priceUSD": "10,000.00",
+            "priceBTC": "1.0",
         }],
         "sentiments": [{
             "date": 1627629490000,
@@ -275,21 +275,21 @@ const dummyData = [{
         "name": "Ripple",
         "ticker": "XRP",
         "rank": "11",
-        "price_usd": "10,000.00",
-        "price_btc": "1.0",
-        "24h_volume_usd": "1,000,000,000.00",
-        "market_cap_usd": "10,000,000,000.00",
-        "available_supply": "10,000,000,000.00",
-        "total_supply": "10,000,000,000.00",
-        "percent_change_1h": "0.00",
-        "percent_change_24h": "0.00",
-        "percent_change_7d": "0.00",
-        "last_updated_sentiment": "1516244800000",
-        "last_updated_market": "1516244800000",
-        "market_values": [{
+        "priceUSD": "10,000.00",
+        "priceBTC": "1.0",
+        "24hVolumeUSD": "1,000,000,000.00",
+        "marketCapUSD": "10,000,000,000.00",
+        "availableSupply": "10,000,000,000.00",
+        "totalSupply": "10,000,000,000.00",
+        "percentChange1H": "0.00",
+        "percentChange24H": "0.00",
+        "percentChange7D": "0.00",
+        "lastUpdatedSentiment": "1516244800000",
+        "lastUpdatedMarket": "1516244800000",
+        "marketValues": [{
             "date": 1627629490000,
-            "price_usd": "10,000.00",
-            "price_btc": "1.0",
+            "priceUSD": "10,000.00",
+            "priceBTC": "1.0",
         }],
         "sentiments": [{
             "date": 1627629490000,
@@ -313,7 +313,7 @@ function getTickerIndex(ticker) {
 
 /**
  * @openapi
- * /:
+ * /coins:
  *  get:
  *      description: Get all coins' data
  *      tags: [coins]
@@ -329,7 +329,7 @@ router.get('/', function(req, res) {
 
 /**
  * @openapi
- * /:
+ * /coins/tickers:
  *  get:
  *      description: Get a list of all coins' tickers
  *      tags: [coins]
@@ -345,11 +345,17 @@ router.get('/tickers', function(req, res) {
 
 /**
  * @openapi
- * /:
+ * /coins/{ticker}:
  *  get:
  *      description: Get a specific coin's data
  *      tags: [coins]
  *      produces: [application/json]
+ *      parameters:
+ *          - name: ticker
+ *            description: The ticker of the coin
+ *            in: path
+ *            required: true
+ *            type: string
  *      responses:
  *          200:
  *              description: Returns a specific coin's data
@@ -365,11 +371,17 @@ router.get('/:ticker', function(req, res) {
 
 /**
  * @openapi
- * /:
+ * /coins/{ticker}/sentiment:
  *  get:
  *      description: Get all of a specific coin's sentiment analysis values
  *      tags: [coins]
  *      produces: [application/json]
+ *      parameters:
+ *          - name: ticker
+ *            description: The ticker of the coin
+ *            in: path
+ *            required: true
+ *            type: string
  *      responses:
  *          200:
  *              description: Returns a specific coin's sentiment analysis values
@@ -385,11 +397,17 @@ router.get('/:ticker/sentiments', function(req, res) {
 
 /**
  * @openapi
- * /:
+ * /coins/{ticker}/recentSentiment:
  *  get:
  *      description: Get a specific coin's recent sentiment analysis values
  *      tags: [coins]
  *      produces: [application/json]
+ *      parameters:
+ *          - name: ticker
+ *            description: The ticker of the coin
+ *            in: path
+ *            required: true
+ *            type: string
  *      responses:
  *          200:
  *              description: Returns a specific coin's recent sentiment analysis values
@@ -405,11 +423,19 @@ router.get('/:ticker/recentSentiment', function(req, res) {
 
 /**
  * @openapi
- * /:
+ * /coins/{ticker}/previousSentiments/{numDays}:
  *  get:
  *      description: Get a specific coin's sentiment analysis values for the previous number of days
  *      tags: [coins]
  *      produces: [application/json]
+ *      parameters:
+ *          - name: ticker
+ *            description: The ticker of the coin
+ *            in: path
+ *            required: true
+ *            type: string
+ *          - name: numDays
+ *            description: The number of previous days to get sentiment analysis values for
  *      responses:
  *          200:
  *              description: Returns a specific coin's sentiment analysis values for the previous number of days
@@ -434,11 +460,25 @@ router.get('/:ticker/previousSentiments/:numDays', function(req, res) {
 
 /**
  * @openapi
- * /:
+ * /coins/{ticker}/specificSentiments:
  *  get:
  *      description: Get a specific coin's sentiment analysis values for a specific date range
  *      tags: [coins]
  *      produces: [application/json]
+ *      parameters:
+ *          - name: ticker
+ *            description: The ticker of the coin
+ *            in: path
+ *            required: true
+ *            type: string
+ *         - name: startDate
+ *           description: The unix timestamp start date of the range
+ *           in: query
+ *           type: number
+ *         - name: endDate
+ *           description: The unix timestamp end date of the range
+ *           in: query
+ *           type: number
  *      responses:
  *          200:
  *              description: Returns a specific coin's sentiment analysis values for a specific date range
@@ -466,7 +506,7 @@ router.get('/:ticker/values', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
         return res.status(404).send({'message': 'Not found'});
-    res.json({'market_values': dummyData[index].market_values});
+    res.json({'marketValues': dummyData[index].marketValues});
 });
 
 
@@ -475,7 +515,7 @@ router.get('/:ticker/recentValue', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
         return res.status(404).send({'message': 'Not found'});
-    res.json(dummyData[index].market_values[dummyData[index].market_values.length - 1]);
+    res.json(dummyData[index].marketValues[dummyData[index].marketValues.length - 1]);
 });
 
 
@@ -487,13 +527,13 @@ router.get('/:ticker/previousValues/:numDays', function(req, res) {
     const today = new Date()
     today.setHours(0, 0, 0, 0);
     var values = [];
-    dummyData[index].market_values.forEach(function(item) {
+    dummyData[index].marketValues.forEach(function(item) {
         const valueDate = new Date(item.date)
         valueDate.setHours(0, 0, 0, 0);
         if (differenceInDate(today, valueDate) <= req.params.numDays)
             values.push(item);
     });
-    res.json({'market_values': values});
+    res.json({'marketValues': values});
 });
 
 
@@ -509,7 +549,7 @@ router.get('/:ticker/specificValues', function(req, res) {
         if (req.body.startDate <= item.date && item.date <= req.body.endDate)
             values.push(item);
     });
-    res.json({'market_values': values});
+    res.json({'marketValues': values});
 });
 
 
@@ -530,7 +570,7 @@ router.put('/:ticker/sentiment', function(req, res) {
         return res.status(404).send({'message': 'Not found'});
     if (!req.body.sentiment)
         return res.status(400).send({'message': 'Bad request'});
-    if (dummyData[index].last_updated_sentiment == res.body.sentiment.date)
+    if (dummyData[index].lastUpdatedSentiment == res.body.sentiment.date)
         return res.status(409).send('Already exists');
     dummyData[index].sentiments.push(req.body.sentiment);
     res.sendStatus(200);
@@ -551,12 +591,12 @@ router.put('/:ticker/addValue', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
         return res.status(404).send({'message': 'Not found'});
-    if (!req.body.market_value)
+    if (!req.body.marketValue)
         return res.status(400).send({'message': 'Bad request'});
-    if (dummyData[index].last_updated_market == res.body.market_value.date)
+    if (dummyData[index].lastUpdatedMarket == res.body.marketValue.date)
         return res.status(409).send({'message': 'Already exists'});
-    dummyData[index].last_updated_market = res.body.market_value.date;
-    dummyData[index].market_values.push(req.body.market_value);
+    dummyData[index].lastUpdatedMarket = res.body.marketValue.date;
+    dummyData[index].marketValues.push(req.body.marketValue);
     res.sendStatus(200);
 });
 
@@ -579,11 +619,11 @@ router.get('/:ticker/prediction/', function(req, res) {
         return res.status(404).send({'message': 'Not found'});
     if (!req.body.date)
         return res.status(400).send({'message': 'Bad request'});
-    const prediction_date = new Date(req.body.date)
-    prediction_date.setHours(0, 0, 0, 0);
-    if (!(prediction_date in dummyData[index].predictions))
+    const predictionDate = new Date(req.body.date)
+    predictionDate.setHours(0, 0, 0, 0);
+    if (!(predictionDate in dummyData[index].predictions))
         return res.status(404).send({'message': 'Not found'});
-    const prediction = dummyData[index].predictions[prediction_date];
+    const prediction = dummyData[index].predictions[predictionDate];
     res.json({'prediction': prediction});
 });
 

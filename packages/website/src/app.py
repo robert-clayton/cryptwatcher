@@ -12,7 +12,7 @@ load_dotenv(find_dotenv())
 # Get coin data from the API
 api_url = os.getenv('API_URL')
 try:
-    coin_data = requests.get(api_url + '/v1/coins').json()['coins']
+    coin_data = requests.get(api_url + '/coins').json()['coins']
 except:
     coin_data = []
 

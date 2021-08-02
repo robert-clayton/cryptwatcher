@@ -22,7 +22,7 @@ const openapi_specification = await swagger_jsdoc(options)
 
 
 app.use(express.json())
-app.use('/v1/coins', coinsRouter);
+app.use('/coins', coinsRouter);
 
 app.get('/', (req, res) => {
     res.send("Hello World!");
