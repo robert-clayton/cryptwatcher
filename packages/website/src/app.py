@@ -13,7 +13,9 @@ load_dotenv(find_dotenv())
 api_url = os.getenv('API_URL')
 try:
     coin_data = requests.get(api_url + '/coins').json()['coins']
-except:
+    API_UP = True
+except requests.exceptions.ConnectionError:
+    API_UP = False
     coin_data = []
 
 
@@ -34,8 +36,8 @@ async def init(q: Q):
                 for coin in coin_data
             ]),
             ui.nav_group('Help', items=[
-                ui.nav_item(name='#about', label='Repository', icon='Info'),
-                ui.nav_item(name='#information', label='Repository', icon='Help'),
+                ui.nav_item(name='#repo', label='Repository', icon='Info'),
+                ui.nav_item(name='#api', label='API', icon='Info'),
             ])
         ],
     )
@@ -48,10 +50,17 @@ async def init(q: Q):
     await q.page.save()
 
 
-@on('#information')
+@on('#repo')
 async def open_github(q: Q):
-    """Support page"""
+    """Repo"""
     webbrowser.open('https://www.github.com/robert-clayton/cryptwatcher')
+    await q.page.save()
+
+
+@on('#api')
+async def open_github(q: Q):
+    """OpenAPI Documentation"""
+    webbrowser.open('http://localhost:5000/openapi/')
     await q.page.save()
 
 
