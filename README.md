@@ -61,7 +61,6 @@ To create a web app and all required backend services/api that displays predicti
         - [ ] Automated testing
         - [x] Automated linting
         - [ ] Automated safety checks
-        - [ ] Automated OpenAPI documentation generation
         - [ ] Automated deployment
     - [x] Base API structure (e.g. endpoints, error handling, etc)
         - [x] PUT updated ticker data
