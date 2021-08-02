@@ -45,6 +45,7 @@ def get_coin_name(ticker: str) -> str:
         return response.json()['result']
     return 'INVALID'
 
+
 async def init(q: Q):
     """Initialize the app"""
     q.args.tickers = get_tickers()

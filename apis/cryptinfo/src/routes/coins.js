@@ -570,6 +570,8 @@ router.get('/:ticker/specificSentiments', function(req, res) {
  *      responses:
  *          200:
  *              description: Returns all of a specific coin's market values
+ *              schema:
+ *                  $ref: '#/definitions/MarketValues'
  *          404:
  *              description: Ticker not found
  */
@@ -718,11 +720,13 @@ router.get('/:ticker/specificValues', function(req, res) {
  *            required: true
  *            type: string
  *            example: 'btc'
- *          - name: tickerValues
+ *          - name: marketValue
  *            description: The sentiment value object of the coin
  *            in: body
  *            required: true
  *            type: object
+ *            schema:
+ *              $ref: '#/definitions/Sentiment'
  *      responses:
  *          200:
  *              description: Success
@@ -733,7 +737,7 @@ router.get('/:ticker/specificValues', function(req, res) {
  *          409:
  *             description: The market value object at the given date already exists
  */
-router.put('/:ticker/addValue', function(req, res) {
+router.put('/:ticker/value', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
         return res.status(404).send({'message': 'Not found'});
@@ -877,6 +881,8 @@ router.get('/:ticker/prediction/', function(req, res) {
  *            in: body
  *            required: true
  *            type: object
+ *              schema:
+ *                  $ref: '#/definitions/MarketValue'
  *      responses:
  *          200:
  *              description: Success
