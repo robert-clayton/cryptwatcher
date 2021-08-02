@@ -63,10 +63,12 @@ To create a web app and all required backend services/api that displays predicti
         - [ ] Automated safety checks
         - [ ] Automated deployment
     - [x] Base API structure (e.g. endpoints, error handling, etc)
-        - [x] PUT new ticker market data
         - [x] PUT updated ticker data
+        - [x] PUT new ticker sentiment values for date (e.g. 
+        positive, negative, neutral)
+        - [x] PUT new ticker market data
         - [x] POST new ticker
-        - [x] POST new ticker sentiment values for date (e.g. positive, negative, neutral)
+        - [x] DELETE an existing ticker
         - [x] GET all tickers list
         - [x] GET most recent market value of a ticker
         - [x] GET all market values of ticker
@@ -76,6 +78,8 @@ To create a web app and all required backend services/api that displays predicti
         - [x] GET all sentiment analysis value of ticker
         - [x] GET all sentiment analysis values of ticker for the previous N days
         - [x] GET all sentiment analysis values of ticker for a specific range of dates
+        - [x] GET prediction of price of ticker for date
+    - [ ] OpenAPI Documentation
     - [ ] Update API to work with a database model
 3. [ ] Create a headless service that obtains market data from various sources and feeds it into a remote SQLite database
     - [ ] DevOps Implementation

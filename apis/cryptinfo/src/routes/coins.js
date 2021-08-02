@@ -300,6 +300,7 @@ const dummyData = [{
     }
 ]
 
+
 function getTickerIndex(ticker) {
     ticker = ticker.toUpperCase();
     for (var i = 0; i < dummyData.length; i++) {
@@ -309,19 +310,51 @@ function getTickerIndex(ticker) {
     return -1;
 }
 
-// Get all coins' data
+
+/**
+ * @openapi
+ * /:
+ *  get:
+ *      description: Get all coins' data
+ *      tags: [coins]
+ *      produces: [application/json]
+ *      responses:
+ *          200:
+ *              description: Returns all coins' data
+ */
 router.get('/', function(req, res) {
-    res.json(dummyData);
+    res.json({'coins': dummyData});
 });
 
 
-// Get a list of all coins' tickers
+/**
+ * @openapi
+ * /:
+ *  get:
+ *      description: Get a list of all coins' tickers
+ *      tags: [coins]
+ *      produces: [application/json]
+ *      responses:
+ *          200:
+ *              description: Returns a list of all coins' data
+ */
 router.get('/tickers', function(req, res) {
     res.json({'tickers' : dummyData.map(({ ticker }) => ticker)});
 });
 
 
-// Get a specific coin's data
+/**
+ * @openapi
+ * /:
+ *  get:
+ *      description: Get a specific coin's data
+ *      tags: [coins]
+ *      produces: [application/json]
+ *      responses:
+ *          200:
+ *              description: Returns a specific coin's data
+ *          404:
+ */
 router.get('/:ticker', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
@@ -330,7 +363,18 @@ router.get('/:ticker', function(req, res) {
 });
 
 
-// Get all of a specific coin's sentiment analysis values
+/**
+ * @openapi
+ * /:
+ *  get:
+ *      description: Get all of a specific coin's sentiment analysis values
+ *      tags: [coins]
+ *      produces: [application/json]
+ *      responses:
+ *          200:
+ *              description: Returns a specific coin's sentiment analysis values
+ *          404:
+ */
 router.get('/:ticker/sentiments', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
@@ -339,7 +383,18 @@ router.get('/:ticker/sentiments', function(req, res) {
 });
 
 
-// Get a specific coin's recent sentiment analysis values
+/**
+ * @openapi
+ * /:
+ *  get:
+ *      description: Get a specific coin's recent sentiment analysis values
+ *      tags: [coins]
+ *      produces: [application/json]
+ *      responses:
+ *          200:
+ *              description: Returns a specific coin's recent sentiment analysis values
+ *          404:
+ */
 router.get('/:ticker/recentSentiment', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     if (index == -1)
@@ -348,7 +403,18 @@ router.get('/:ticker/recentSentiment', function(req, res) {
 });
 
 
-// Get a specific coin's sentiment analysis values for the previous number of days
+/**
+ * @openapi
+ * /:
+ *  get:
+ *      description: Get a specific coin's sentiment analysis values for the previous number of days
+ *      tags: [coins]
+ *      produces: [application/json]
+ *      responses:
+ *          200:
+ *              description: Returns a specific coin's sentiment analysis values for the previous number of days
+ *          404:
+ */
 router.get('/:ticker/previousSentiments/:numDays', function(req, res) {
     const index = getTickerIndex(req.params.ticker);
     const today = new Date()
@@ -366,7 +432,20 @@ router.get('/:ticker/previousSentiments/:numDays', function(req, res) {
 });
 
 
-// Get a specific coin's sentiment analysis values for a specific date range
+/**
+ * @openapi
+ * /:
+ *  get:
+ *      description: Get a specific coin's sentiment analysis values for a specific date range
+ *      tags: [coins]
+ *      produces: [application/json]
+ *      responses:
+ *          200:
+ *              description: Returns a specific coin's sentiment analysis values for a specific date range
+ *          400
+ *              description: If the date range is invalid
+ *          404:
+ */
 router.get('/:ticker/specificSentiments', function(req, res) {
     if (!req.params.startDate || !req.params.endDate)
         return res.status(400).send({'message': 'Bad request'});
@@ -489,6 +568,23 @@ router.delete('/:ticker', function(req, res) {
         return res.status(404).send({'message': 'Not found'});
     delete dummyData[ticker];
     res.sendStatus(200);
+});
+
+
+// Get predicted values for a specific coin at a specific date
+// req.body.date is the date to predict for
+router.get('/:ticker/prediction/', function(req, res) {
+    const index = getTickerIndex(req.params.ticker);
+    if (index == -1)
+        return res.status(404).send({'message': 'Not found'});
+    if (!req.body.date)
+        return res.status(400).send({'message': 'Bad request'});
+    const prediction_date = new Date(req.body.date)
+    prediction_date.setHours(0, 0, 0, 0);
+    if (!(prediction_date in dummyData[index].predictions))
+        return res.status(404).send({'message': 'Not found'});
+    const prediction = dummyData[index].predictions[prediction_date];
+    res.json({'prediction': prediction});
 });
 
 
