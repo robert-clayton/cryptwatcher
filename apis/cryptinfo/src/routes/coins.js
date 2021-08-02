@@ -356,6 +356,7 @@ router.get('/tickers', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *      responses:
  *          200:
  *              description: Returns a specific coin's data
@@ -383,6 +384,7 @@ router.get('/:ticker', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *      responses:
  *          200:
  *              description: Returns a specific coin's sentiment analysis values
@@ -412,6 +414,7 @@ router.get('/:ticker/sentiments', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *      responses:
  *          200:
  *              description: Returns a specific coin's recent sentiment analysis values
@@ -439,11 +442,13 @@ router.get('/:ticker/recentSentiment', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *          - name: numDays
  *            description: The number of previous days to get sentiment analysis values for
  *            in: body
  *            required: true
  *            type: integer
+ *            example: 15
  *      responses:
  *          200:
  *              description: Returns a specific coin's sentiment analysis values for the previous number of days
@@ -484,14 +489,17 @@ router.get('/:ticker/previousSentiments', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *          - name: startDate
  *            description: The unix timestamp start date of the range
  *            in: body
  *            type: integer
+ *            example: 1516244800000
  *          - name: endDate
  *            description: The unix timestamp end date of the range
  *            in: body
  *            type: integer
+ *            example: 1516244800000
  *      responses:
  *          200:
  *              description: Returns a specific coin's sentiment analysis values for a specific date range
@@ -530,6 +538,7 @@ router.get('/:ticker/specificSentiments', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *      responses:
  *          200:
  *              description: Returns all of a specific coin's market values
@@ -557,6 +566,7 @@ router.get('/:ticker/values', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *      responses:
  *          200:
  *              description: Returns a specific coin's most recent market value
@@ -585,11 +595,13 @@ router.get('/:ticker/recentValue', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *          - name: numDays
  *            description: The number of previous days to get market values for
  *            in: body
  *            required: true
  *            type: integer
+ *            example: 15
  *      responses:
  *          200:
  *              description: Returns a specific coin's market values for the previous number of days
@@ -630,14 +642,17 @@ router.get('/:ticker/previousValues', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *          - name: startDate
  *            description: The unix timestamp start date of the range
  *            in: body
  *            type: integer
+ *            example: 1516244800000
  *          - name: endDate
  *            description: The unix timestamp end date of the range
  *            in: body
  *            type: integer
+ *            example: 1516244800000
  *      responses:
  *          200:
  *              description: Returns a specific coin's market values for a specific date range
@@ -675,6 +690,7 @@ router.get('/:ticker/specificValues', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *          - name: tickerValues
  *            description: The sentiment value object of the coin
  *            in: body
@@ -717,11 +733,13 @@ router.put('/:ticker/addValue', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *          - name: date
  *            description: The date to get a predicted values for
  *            in: body
  *            required: true
  *            type: integer
+ *            example: 1516244800000
  *      responses:
  *          200:
  *              description: Returns predicted values for a specific coin at a specific date
@@ -757,6 +775,7 @@ router.get('/:ticker/prediction/', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *      responses:
  *          200:
  *              description: Success
@@ -784,6 +803,7 @@ router.get('/:ticker/prediction/', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *          - name: sentiment
  *            description: The sentiment value object of the coin
  *            in: body
@@ -824,6 +844,7 @@ router.get('/:ticker/prediction/', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *          - name: tickerValues
  *            description: The sentiment value object of the coin
  *            in: body
@@ -860,6 +881,7 @@ router.put('/:ticker', function(req, res) {
  *            in: path
  *            required: true
  *            type: string
+ *            example: 'btc'
  *      responses:
  *          200:
  *              description: Success
@@ -867,10 +889,10 @@ router.put('/:ticker', function(req, res) {
  *              description: The ticker does not exist
  */
  router.delete('/:ticker', function(req, res) {
-    var ticker = req.params.ticker;
-    if (!(ticker in dummyData))
+    const index = getTickerIndex(req.params.ticker);
+    if (index == -1)
         return res.status(404).send({'message': 'Not found'});
-    delete dummyData[ticker];
+    delete dummyData[index];
     res.sendStatus(200);
 });
 
