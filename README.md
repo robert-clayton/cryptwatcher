@@ -61,6 +61,7 @@ To create a web app and all required backend services/api that displays predicti
         - [ ] Automated testing
         - [x] Automated linting
         - [ ] Automated safety checks
+        - [ ] Automated OpenAPI documentation generation
         - [ ] Automated deployment
     - [x] Base API structure (e.g. endpoints, error handling, etc)
         - [x] PUT updated ticker data
@@ -79,7 +80,14 @@ To create a web app and all required backend services/api that displays predicti
         - [x] GET all sentiment analysis values of ticker for the previous N days
         - [x] GET all sentiment analysis values of ticker for a specific range of dates
         - [x] GET prediction of price of ticker for date
-    - [ ] OpenAPI Documentation
+    - [x] OpenAPI-compatible Docstrings
+    - [ ] Provide schema for all responses
+        - [ ] Prediction object
+        - [ ] etc...
+    - [ ] Provide schema for all request body objects
+        - [x] Sentiment Analysis object
+        - [ ] Market Data object
+        - [ ] Coin object
     - [ ] Update API to work with a database model
 3. [ ] Create a headless service that obtains market data from various sources and feeds it into a remote SQLite database
     - [ ] DevOps Implementation
