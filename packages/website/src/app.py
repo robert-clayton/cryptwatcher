@@ -13,7 +13,7 @@ load_dotenv(find_dotenv())
 api_url = os.getenv('API_URL')
 
 
-#TODO: Replace most of these once the API is connected to a database
+#TODO: Replace most of these once the API is connected to a database #pylint: disable=W0511
 ####   Don't want to have the API return everything stored in dummy data
 ####   for now as that just seems like a _poor_ idea
 ####   Once the API is connected to a database, these will be replaced with

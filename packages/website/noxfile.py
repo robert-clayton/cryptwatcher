@@ -24,8 +24,8 @@ def lint(session: nox_poetry.session):
 def tests(session: nox_poetry.session):
     """Runs the test suite."""
     requirements = str(session.poetry.export_requirements())
-    session.install('pytest', 'pytest-cov', f'-r{requirements}')
-    session.run('pytest', '--cov=src tests/')
+    session.install('pytest', f'-r{requirements}')
+    session.run('pytest')
 
 
 @nox_poetry.session
