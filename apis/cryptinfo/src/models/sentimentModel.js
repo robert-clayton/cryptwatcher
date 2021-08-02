@@ -12,11 +12,14 @@
  *              ticker:
  *                  type: string
  *              positive:
- *                  type: float
+ *                  type: number
+ *                  format: float
  *              negative:
- *                  type: float
+ *                  type: number
+ *                  format: float
  *              neutral:
- *                  type: float
+ *                  type: number
+ *                  format: float
  *      Sentiments:
  *          type: array
  *          items:
